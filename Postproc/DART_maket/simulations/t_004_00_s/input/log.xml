@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DartParameterExceptions>
+    <DartParameterException>
+        <Origin>
+            <Name>Phase.DartProduct.dartModuleProducts.BrfProductsProperties.SensorImageSimulation.Pinhole.Sensor.sensorPosX</Name>
+            <Label>X                          </Label>
+            <Description>X coordinate of the camera </Description>
+        </Origin>
+        <Message>
+            <OriginMessage>Value '-194.7' is lower than minimum available value '0.0'</OriginMessage>
+        </Message>
+    </DartParameterException>
+    <DartParameterException>
+        <Origin>
+            <Name>Phase.DartProduct.dartModuleProducts.BrfProductsProperties.SensorImageSimulation.Pinhole.Sensor.sensorPosY</Name>
+            <Label>Y                          </Label>
+            <Description>Y coordinate of the camera</Description>
+        </Origin>
+        <Message>
+            <OriginMessage>Value '-132.2' is lower than minimum available value '0.0'</OriginMessage>
+        </Message>
+    </DartParameterException>
+    <DartParameterException>
+        <Origin>
+            <Name>Phase.DartProduct.dartModuleProducts.BrfProductsProperties.SensorImageSimulation.Pinhole.Sensor.sensorPosY</Name>
+            <Label>Y                          </Label>
+            <Description>Y coordinate of the camera</Description>
+        </Origin>
+        <Message>
+            <OriginMessage>Value '-132.2' is lower than minimum available value '0.0'</OriginMessage>
+        </Message>
+    </DartParameterException>
+</DartParameterExceptions>
