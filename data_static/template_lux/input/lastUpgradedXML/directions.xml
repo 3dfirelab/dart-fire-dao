@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DartFile build="v1259" version="5.8.10">
+    <Directions exactDate="2" ifCosWeighted="0" numberOfPropagationDirections="100">
+        <SunViewingAngles dayOfTheYear="-1" sunViewingAzimuthAngle="225.0" sunViewingZenithAngle="30.0"/>
+        <HotSpotProperties hotSpotParallelPlane="0" hotSpotPerpendicularPlane="0" oversampleDownwardRegion="0" oversampleUpwardRegion="0"/>
+        <Penumbra mode="0"/>
+        <AzimuthalOffset directionalAzimuthalOffset="0.0" sunAzimuthalOffset="0.0"/>
+        <ExpertModeZone numberOfLayers="0" numberOfAngularSector="10"/>
+    </Directions>
+</DartFile>

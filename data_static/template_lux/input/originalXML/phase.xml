@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DartFile build="v1192" version="5.7.9">
+    <Phase calculatorMethod="0">
+        <AtmosphereRadiativeTransfer TOAtoBOA="2">
+            <AtmosphereRadiativeTransferOptions couplingEnabled="1"/>
+        </AtmosphereRadiativeTransfer>
+        <ExpertModeZone accelerationEngine="0" albedoThreshold="1.0E-7"
+            distanceBetweenIlluminationSubCenters="0.25" expertMode="1"
+            illuminationRepartitionMode="2"
+            isInterceptedPowerPerDirectionForSpecularCheck="0"
+            lightPropagationThreshold="0.0" maxNbSceneCrossing="5"
+            nbRandomPointsPerInteceptionAtmosphere="1"
+            nbSubSubcenterTurbidEmission="40" nbSubcenterVolume="2"
+            nbThreads="22" nbTrianglesWithinVoxelAcceleration="10"
+            sparseVoxelAcceleration="1" subFaceBarycenterEnabled="1"
+            subFaceBarycenterSubdivision="1"
+            surfaceBarycenterEnabled="1"
+            thermalEmissionSurfaceSubdivision="0.01"
+            triangleStorageMode="0" useExternalScripts="0"/>
+        <DartInputParameters>
+            <nodefluxtracking gaussSiedelAcceleratingTechnique="0" numberOfIteration="5"/>
+            <SpectralDomainTir temperatureMode="1">
+                <TemperatureFile temperatureFileName="temperature.txt"/>
+            </SpectralDomainTir>
+            <SpectralIntervals>
+                <SpectralIntervalsProperties bandNumber="0"
+                    deltaLambda="0.02" meanLambda="3.9" spectralDartMode="2">
+                    <emissionLawNode emissionLaw="1"/>
+                </SpectralIntervalsProperties>
+            </SpectralIntervals>
+            <temperatureAtmosphere atmosphericApparentTemperature="1.0"/>
+            <nodeIlluminationMode irradianceMode="0">
+                <irradianceDatabaseNode databaseName="Solar_constant.db"
+                    irradianceColumn="irradiance"
+                    irradianceTable="TOASolar_THKUR"
+                    weightAtmosphereParameters="1" weightReflectanceParameters="1">
+                    <WeightingParameters sceneAverageTemperatureForPonderation="300.0"/>
+                </irradianceDatabaseNode>
+                <SpectralIrradiance>
+                    <CommonParameters commonIrradianceCheckBox="1"
+                        commonSkylCheckBox="1" irraDef="0"/>
+                    <SpectralIrradianceValue Skyl="0" bandNumber="0" irradiance="0"/>
+                </SpectralIrradiance>
+            </nodeIlluminationMode>
+            <ImageSideIllumination disableSolarIllumination="0"
+                disableThermalEmission="0" sideIlluminationEnabled="0"/>
+        </DartInputParameters>
+        <DartProduct>
+            <dartModuleProducts>
+                <CommonProducts polarizationProducts="0" radiativeBudgetProducts="1">
+                    <radiativeBudgetProperties binaryFormat="0"
+                        budget2DParType="0" budget3DParSurface="1"
+                        budget3DParType="0" budgetTotalParType="0"
+                        budgetUnitModeR="0" extrapolation="1"
+                        fIRfARfSRfINTR1DProducts="0"
+                        fIRfARfSRfINTR2DProducts="1"
+                        fIRfARfSRfINTR3DProducts="0" profileParType="0">
+                        <Components>
+                            <CellComponents absorbed="1" backEntry="0"
+                                backExit="0" bottomEntry="0"
+                                bottomExit="0" emitted="1"
+                                frontEntry="0" frontExit="0"
+                                intercepted="1" leftEntry="0"
+                                leftExit="0" rightEntry="0"
+                                rightExit="0" scattered="1" topEntry="1"
+                                topExit="1" totalEntry="0" totalExit="0"/>
+                            <ElementComponents absorbed="1" emitted="1"
+                                intercepted="1" scattered="1"/>
+                        </Components>
+                    </radiativeBudgetProperties>
+                </CommonProducts>
+                <FluxTrackingModeProducts allIterationsProducts="1"
+                    brfProducts="1" order1Products="1" temperaturePerTrianglePerCell="0">
+                    <BrfProductsProperties brfProduct="1"
+                        centralizedBrfProduct="1" extrapolation="1"
+                        generatePerTypeProduct="0"
+                        horizontalOversampling="1" image="1"
+                        luminanceProducts="1" maximalThetaImages="25.0"
+                        nb_scene="1" pixelToSceneCorrespondences="0"
+                        projection="0" sensorOversampling="1"
+                        sensorPlaneprojection="1" transmittanceImages="0">
+                        <ExpertModeZone_Etalement etalement="2">
+                            <ExpertModeZone_Projection keepNonProjectedImage="1"/>
+                        </ExpertModeZone_Etalement>
+                    </BrfProductsProperties>
+                    <Order1Options imagesOnly="0" order1Only="0"/>
+                </FluxTrackingModeProducts>
+            </dartModuleProducts>
+            <maketModuleProducts MNEProducts="0" areaMaketProducts="0"
+                coverRateProducts="0" laiProducts="0" objectGeneration="0"/>
+        </DartProduct>
+        <SensorImageSimulation importMultipleSensors="0">
+            <Pinhole defCameraOrientation="1" ifFishEye="0" setImageSize="1">
+                <Sensor sensorPosX="0" sensorPosY="0" sensorPosZ="1000"/>
+                <OrientationDef orientDefType="0">
+                    <CameraOrientation cameraPhi="45" cameraRotation="0" cameraTheta="30"/>
+                </OrientationDef>
+                <CamImageFOV defNbPixels="1" definitionFOV="1">
+                    <NbPixels nbPixelsX="60" nbPixelsY="50"/>
+                    <CamImageAOV aovX="30" aovY="25"/>
+                </CamImageFOV>
+            </Pinhole>
+            <InsideSensor sensorConfiguration="0">
+                <InsideSensorConfiguration nbSceneRepetition="0">
+                    <SensorCentralPosition sensorPosX="36"
+                        sensorPosY="36" sensorPosZ="1.6"/>
+                    <SensorView viewDefinition="1">
+                        <SensorAngleDirection sensorDirectionPhi="45" sensorDirectionTetha="98"/>
+                    </SensorView>
+                </InsideSensorConfiguration>
+                <Image>
+                    <SensorDimensions height="0.40" width="0.54"/>
+                    <ImageResolution nbPixelsHeight="1000" nbPixelsWidth="1000"/>
+                    <FocaleDistance focaleDistance="0.1"/>
+                    <SensorOrientation tethaOrientation="0.0"/>
+                </Image>
+            </InsideSensor>
+            <InsideSensor sensorConfiguration="1">
+                <InsideSensorConfiguration nbSceneRepetition="0">
+                    <SensorCentralPosition sensorPosX="36"
+                        sensorPosY="36" sensorPosZ="1.6"/>
+                    <SensorView viewDefinition="1">
+                        <SensorAngleDirection sensorDirectionPhi="45" sensorDirectionTetha="98"/>
+                    </SensorView>
+                </InsideSensorConfiguration>
+                <Hemisphere>
+                    <ZenithalRange zenithMaximum="90" zenithMinimum="0"/>
+                    <HemisphereImageResolution nbPixelsPerAxis="1001"/>
+                    <SphereGeometry radius="0.01"/>
+                    <SensorOrientation tethaOrientation="0.0"/>
+                </Hemisphere>
+            </InsideSensor>
+        </SensorImageSimulation>
+    </Phase>
+</DartFile>

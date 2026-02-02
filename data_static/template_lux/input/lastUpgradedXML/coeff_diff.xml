@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DartFile build="v1259" version="5.8.10">
+    <Coeff_diff useCombinedYield="0" fluorescenceFile="0" fluorescenceProducts="0">
+        <Surfaces>
+            <LambertianMultiFunctions>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="loam_gravelly_brown" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="loam_gravelly_brown" databaseName="Lambertian_mineral.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="Lambertian_Phase_Function_1" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="reflect_equal_1_trans_equal_0_0" databaseName="Lambertian_mineral.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="box_inside" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="reflect_equal_0_trans_equal_0_0" databaseName="lambertian_ronan.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="box_outside" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="reflect_equal_0_trans_equal_1_0" databaseName="lambertian_ronan.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="steel sheet" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="iron_black_weathered" databaseName="Lambertian_mineral.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+                <LambertianMulti roStDev="0.0" useMultiplicativeFactorForLUT="0" ident="needle" lambertianDefinition="0">
+                    <Lambertian useSpecular="0" ModelName="needle_conifer" databaseName="Lambertian_vegetation.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                    </Lambertian>
+                </LambertianMulti>
+            </LambertianMultiFunctions>
+            <HapkeSpecularMultiFunctions/>
+            <RPVMultiFunctions/>
+            <PhaseExternMultiFunctions/>
+        </Surfaces>
+        <Volumes>
+            <UnderstoryMultiFunctions integrationStepOnPhi="10" integrationStepOnTheta="1" outputLADFile="0">
+                <UnderstoryMulti hasDifferentModelForBottom="0" useOpticalFactorMatrix="0" thermalHotSpotFactor="0.1" dimFoliar="0.01" lad="2" ident="Turbid_Leaf_Deciduous_Phase_Function">
+                    <UnderstoryMultiModel useMultiplicativeFactorForLUT="1" useSpecular="0" ModelName="grass_rye" databaseName="Lambertian_vegetation.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                        <understoryNodeMultiplicativeFactorForLUT diffuseTransmittanceAcceleration="0.0" useSameOpticalFactorMatrixForAllBands="0" LeafTransmittanceFactor="1.0" reflectanceFactor="1.0" useSameFactorForAllBands="1">
+                            <understoryMultiplicativeFactorForLUT useOpticalFactorMatrix="0" LeafTransmittanceFactor="1.0" reflectanceFactor="1.0"/>
+                        </understoryNodeMultiplicativeFactorForLUT>
+                    </UnderstoryMultiModel>
+                    <DirectionalClumpingIndexProperties clumpingb="0.0" clumpinga="0.0" omegaMax="0.0" omegaMin="1.0"/>
+                </UnderstoryMulti>
+                <UnderstoryMulti hasDifferentModelForBottom="0" useOpticalFactorMatrix="0" thermalHotSpotFactor="0.1" dimFoliar="0.01" lad="2" ident="char">
+                    <UnderstoryMultiModel useMultiplicativeFactorForLUT="1" useSpecular="0" ModelName="reflect_equal_0_trans_equal_0_0" databaseName="lambertian_ronan.db">
+                        <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+                        <understoryNodeMultiplicativeFactorForLUT diffuseTransmittanceAcceleration="0.0" useSameOpticalFactorMatrixForAllBands="0" LeafTransmittanceFactor="1.0" reflectanceFactor="1.0" useSameFactorForAllBands="1">
+                            <understoryMultiplicativeFactorForLUT useOpticalFactorMatrix="0" LeafTransmittanceFactor="1.0" reflectanceFactor="1.0"/>
+                        </understoryNodeMultiplicativeFactorForLUT>
+                    </UnderstoryMultiModel>
+                    <DirectionalClumpingIndexProperties clumpingb="0.0" clumpinga="0.0" omegaMax="0.0" omegaMin="1.0"/>
+                </UnderstoryMulti>
+            </UnderstoryMultiFunctions>
+            <AirMultiFunctions>
+                <AirFunction useMultiplicativeFactorForLUT="0" ModelName="rayleigh_air" databaseName="Fluid.db" ident="none"/>
+                <AirFunction useMultiplicativeFactorForLUT="1" ModelName="rayleigh_1_0" databaseName="Fluid.db" ident="Wildcard"/>
+                <AirFunction useMultiplicativeFactorForLUT="0" ModelName="soot_poitou" databaseName="fluid_Aerosols.db" ident="soot_poitou"/>
+                <AirFunction useMultiplicativeFactorForLUT="0" ModelName="soot_BordbarHostika" databaseName="fluid_Aerosols.db" ident="soot_bordbarhostika"/>
+                <AirFunction useMultiplicativeFactorForLUT="0" ModelName="clearocean" databaseName="Fluid.db" ident="acetone"/>
+            </AirMultiFunctions>
+        </Volumes>
+        <Temperatures>
+            <ThermalFunction usePrecomputedIPARs="0" singleTemperatureSurface="1" useOpticalFactorMatrix="0" idTemperature="thermal_function_290_310" meanT="300.0" deltaT="20.0" override3DMatrix="0"/>
+            <ThermalFunction usePrecomputedIPARs="0" singleTemperatureSurface="1" useOpticalFactorMatrix="0" idTemperature="0K" meanT="0.0" deltaT="0.0" override3DMatrix="1"/>
+            <ThermalFunction usePrecomputedIPARs="0" singleTemperatureSurface="1" useOpticalFactorMatrix="0" idTemperature="ambient" meanT="305.15" deltaT="4.0" override3DMatrix="1"/>
+            <ThermalFunction usePrecomputedIPARs="0" singleTemperatureSurface="1" useOpticalFactorMatrix="0" idTemperature="Fire" meanT="1200.0" deltaT="4.0" override3DMatrix="1"/>
+        </Temperatures>
+    </Coeff_diff>
+</DartFile>

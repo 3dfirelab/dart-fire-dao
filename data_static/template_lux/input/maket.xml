@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DartFile build="v1449" version="5.11.0">
+    <Maket useRandomGenerationSeed="0" hideRB="0" exactlyPeriodicScene="0" dartZone="0" linkEarthScene="">
+        <Scene>
+            <CellDimensions z="0.03" x="0.1" roundToExact="0"/>
+            <SceneDimensions y="6.0" x="6.0"/>
+        </Scene>
+        <RandomGenerationParameters generationSeed="733426921"/>
+        <Soil groundEnabled="1">
+            <OpticalPropertyLink ident="Loam_gravelly_brown" indexFctPhase="0" type="0"/>
+            <ThermalPropertyLink idTemperature="thermal_function_290_310" indexTemperature="0"/>
+            <Topography presenceOfTopography="1">
+                <TopographyProperties meshStrategy="2" fileName="DEM.mp#"/>
+            </Topography>
+            <DEM_properties createTopography="1">
+                <DEMGenerator caseDEM="5" outputFileName="DEM.mp#">
+                    <DEM_5 dataEncoding="0" dataFormat="8" fileName="dem_raster.img"/>
+                </DEMGenerator>
+            </DEM_properties>
+        </Soil>
+        <LatLon altitude="0.0" longitude="0.0" latitude="0.0"/>
+    </Maket>
+</DartFile>

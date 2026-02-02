@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DartFile build="v1192" version="5.7.9">
+    <Coeff_diff fluorescenceFile="0" fluorescenceProducts="0">
+        <LambertianMultiFunctions>
+            <LambertianMulti ModelName="loam_gravelly_brown"
+                databaseName="Lambertian_mineral.db"
+                ident="loam_gravelly_brown" roStDev="0.0"
+                useMultiplicativeFactorForLUT="0" useSpecular="0">
+                <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+            </LambertianMulti>
+            <LambertianMulti ModelName="reflect_equal_1_trans_equal_0_0"
+                databaseName="Lambertian_mineral.db"
+                ident="Lambertian_Phase_Function_1" roStDev="0.0"
+                useMultiplicativeFactorForLUT="0" useSpecular="0">
+                <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+            </LambertianMulti>
+            <LambertianMulti ModelName="reflect_equal_0_trans_equal_0_0"
+                databaseName="lambertian_ronan.db" ident="box_inside"
+                roStDev="0.0" useMultiplicativeFactorForLUT="0" useSpecular="0">
+                <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+            </LambertianMulti>
+            <LambertianMulti ModelName="reflect_equal_0_trans_equal_1_0"
+                databaseName="lambertian_ronan.db" ident="box_outside"
+                roStDev="0.0" useMultiplicativeFactorForLUT="0" useSpecular="0">
+                <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+            </LambertianMulti>
+            <LambertianMulti ModelName="iron_black_weathered"
+                databaseName="Lambertian_mineral.db" ident="steel sheet"
+                roStDev="0.000" useMultiplicativeFactorForLUT="0" useSpecular="0">
+                <ProspectExternalModule isFluorescent="0" useProspectExternalModule="0"/>
+            </LambertianMulti>
+        </LambertianMultiFunctions>
+        <HapkeSpecularMultiFunctions/>
+        <RPVMultiFunctions/>
+        <UnderstoryMultiFunctions integrationStepOnPhi="10"
+            integrationStepOnTheta="1" outputLADFile="0"/>
+        <AirMultiFunctions>
+            <AirFunction ModelName="co2_1000k" databaseName="Fluid.db" ident="CO2" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="co_1000k" databaseName="Fluid.db" ident="CO" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="rayleigh_air" databaseName="Fluid.db" ident="none" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="h2o_1000k" databaseName="Fluid.db" ident="H2O" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="rayleigh_1_1" databaseName="Fluid.db" ident="Wildcard" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="soot_poitou" databaseName="fluid_Aerosols.db" ident="soot_poitou" useMultiplicativeFactorForLUT="0"/>
+            <AirFunction ModelName="clearocean" databaseName="Fluid.db" ident="acetone" useMultiplicativeFactorForLUT="0"/>
+        </AirMultiFunctions>
+        <PhaseExternMultiFunctions/>
+        <Temperatures>
+            <ThermalFunction deltaT="20.0"
+                idTemperature="thermal_function_290_310" meanT="300.0"
+                override3DMatrix="0" singleTemperatureSurface="1"
+                useOpticalFactorMatrix="0" usePrecomputedIPARs="0"/>
+            <ThermalFunction deltaT="0.0" idTemperature="0K" meanT="0.0"
+                override3DMatrix="1" singleTemperatureSurface="1"
+                useOpticalFactorMatrix="0" usePrecomputedIPARs="0"/>
+        </Temperatures>
+    </Coeff_diff>
+</DartFile>
