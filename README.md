@@ -28,6 +28,6 @@ mamba env create -f pyhtonEnv-dart.yml
 ```
 - `copy Lambertian_vegetation.db` in the `DART` system database.
 
-# Outputs:~ 
-it outputs the dao scene in the `dirDART` directory.
+# Outputs: 
+it includes the dao scene in the `DART` simulation configuration.
 
