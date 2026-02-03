@@ -27,6 +27,7 @@ This would be considered in the future.
 mamba env create -f pyhtonEnv-dart.yml
 ```
 - `copy Lambertian_vegetation.db` in the `DART` system database.
+- need the latest version of the DOA as on 03/02/2026.
 
 # Outputs: 
 it includes the dao scene in the `DART` simulation configuration.
