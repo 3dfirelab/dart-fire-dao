@@ -1654,11 +1654,11 @@ if __name__ == '__main__':
         curtainLoc = args.curtainLoc
 
     print('copy DART simu to tmp: ', end=(''))
-    dir_in = f"/tmp/DART/simulations/{dir_DART.split('/')[-2].replace(FireName,'t')}/"
+    dir_in = f"/tmp/{os.environ.get('USER')}/DART/simulations/{dir_DART.split('/')[-2].replace(FireName,'t')}/"
 
     if os.path.isdir(dir_in):
         shutil.rmtree(dir_in)
-    os.makedirs(f'/tmp/DART/simulations', exist_ok=True)
+    os.makedirs(f'/tmp/{os.environ.get("USER")}/DART/simulations', exist_ok=True)
     shutil.copytree(dir_DART, dir_in)
     print('done')
 

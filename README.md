@@ -6,7 +6,7 @@
 python dart_tools_dao.py -name 'fds_burner_test'                                                  \
                       -dxy 0.1 -dz 0.033 -t 4                                                     \
                       -dir3dFS '../data_test/Postproc/3DFire/'                  \
-                      -dirDART '/home/paugam/DART_user_data/simulations/fds_burner_test_004_00_s' \
+                      -dirDART '/home/paugam/DART_user_data/simulations/fds_burner_test_004_00_s/' \
                       -tempA 293.15
 ```
 the input apart from the directroy already mentioned above are:
