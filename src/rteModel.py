@@ -79,7 +79,10 @@ def test_if_dartSim_done(inputConfig,root_postproc,FireName,time_requested,getFR
 '''
 
 #####################################################
-def run_dart(inputConfig,dir_in,FireName,time_requested=None,flag_set_up_box4_RadFlux=False,flag_test_geo=False, 
+def run_dart(inputConfig,dir_in,FireName,
+             run_name,
+             #time_requested=None,
+             flag_set_up_box4_RadFlux=False,flag_test_geo=False, 
              flag2run = 'all') :#DirectionPhase):
     '''
     run DART on the output of 3DfireScene
@@ -92,9 +95,9 @@ def run_dart(inputConfig,dir_in,FireName,time_requested=None,flag_set_up_box4_Ra
     if flag_test_geo:
         template_dir += '_noAtm_grdBB'
 
-    if time_requested == None:
-        print('***pb, no time given to run_dart')
-        pdb.set_trace()
+    #if time_requested == None:
+    #    print('***pb, no time given to run_dart')
+    #    pdb.set_trace()
 
     root_dart_simulation = DART_LOCAL+'simulations/'   #inputConfig.params_DART['root_dart_simulation']
     root_dart_tools      = DART_HOME + 'tools/linux/' #inputConfig.params_DART['root_dart_tools']
@@ -108,7 +111,7 @@ def run_dart(inputConfig,dir_in,FireName,time_requested=None,flag_set_up_box4_Ra
 
     DARTimageflag = '{:s}_'.format(inputConfig.params_DART['dart_config_bands']) \
                     if ('dart_config_bands' in inputConfig.params_DART.keys()) else ''
-    run_name = '{:s}t_{:03d}_{:02d}_s'.format(DARTimageflag,*np.array(math.modf(round(time_requested,2))*np.array([100,1]),dtype=int)[::-1])+suffix
+    #run_name = '{:s}t_{:03d}_{:02d}_s'.format(DARTimageflag,*np.array(math.modf(round(time_requested,2))*np.array([100,1]),dtype=int)[::-1])+suffix
     run_name_original = dir_in + run_name
     
     run_name = run_name.replace('{:s}t_'.format(DARTimageflag),FireName+'_')

@@ -1121,7 +1121,7 @@ def addAcetone(mockup, inputConfig, dirdata, time, id_opti=3, obstName='ACETONE 
 
 
 ##############################################################
-def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
+def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, \
                        simulation_name, run_name, dir_simulation, fv_thresholds, T_ambient, curtainLoc,flag_run_phase, flag_extraFDS=False, flag_box=False, flag_debug=False, flag_onecell=False):
   
     if inputConfig.params_DART['flag_run_sensitivity']: run_name += '_sens'
@@ -1229,8 +1229,8 @@ def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
 
         #load FDS boundary file
         #-----------------
-        if flag_extraFDS:
-            bndf_arr, bndf_xyz, NB, IOR, NM, bndf_times = read_fds_bf.load_bndf(dirdata,filebf)
+        #if flag_extraFDS:
+        #    bndf_arr, bndf_xyz, NB, IOR, NM, bndf_times = read_fds_bf.load_bndf(dirdata,filebf)
 
 
         #set temperature in coeff_diff
@@ -1249,7 +1249,8 @@ def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
             flag2run='dirSetup'
             print('   skip direction and phase')
 
-        rteModel.run_dart(inputConfig, dir_simulation, simulation_name, time_requested=round(time,2), flag_set_up_box4_RadFlux=flag_box, flag2run=flag2run,)
+        #rteModel.run_dart(inputConfig, dir_simulation, simulation_name, time_requested=round(time,2), flag_set_up_box4_RadFlux=flag_box, flag2run=flag2run,)
+        rteModel.run_dart(inputConfig, dir_simulation, simulation_name, run_name, flag_set_up_box4_RadFlux=flag_box, flag2run=flag2run,)
     
     else:
         coeff_diff_dir_ = DART_LOCAL + 'simulations/' + simulation_name + run_name.replace('{:s}t_'.format(DARTimageflag),'_') + '/input/'
@@ -1330,9 +1331,9 @@ def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
 
     #load fds bndf geometry and add to mockup
     #-----------------
-    if flag_extraFDS:
-        mockup = addBndfAsTriangle2Mockup(mockup, iplan_arr, bndf_arr, bndf_xyz, bndf_times, time, 
-                                          id_opti=PHASE_SHEET_ID, id_tempInit=nExistingTemp, onecellDim=onecellDim)
+    #if flag_extraFDS:
+    #    mockup = addBndfAsTriangle2Mockup(mockup, iplan_arr, bndf_arr, bndf_xyz, bndf_times, time, 
+    #                                      id_opti=PHASE_SHEET_ID, id_tempInit=nExistingTemp, onecellDim=onecellDim)
 
 
     if curtainLoc is not None:
@@ -1343,22 +1344,22 @@ def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
 
     #load fds profile, create geometry and add to mockup
     #-----------------
-    if flag_extraFDS:
-        mockup = addAcetone(mockup, inputConfig, dirdata, time, id_opti=PHASE_ACETONE_ID,obstName=inputConfig.params_model['Acetone_surfName'], onecellDim=onecellDim)
+    #if flag_extraFDS:
+    #    mockup = addAcetone(mockup, inputConfig, dirdata, time, id_opti=PHASE_ACETONE_ID,obstName=inputConfig.params_model['Acetone_surfName'], onecellDim=onecellDim)
 
 
     # special simulation for markup spot
-    if 'run_backgrd_simulation_with_markup' in inputConfig.params_DART.keys():
-        if (time<0) & (inputConfig.params_DART['run_backgrd_simulation_with_markup']):
-       
-            print('Add markup')
-            boxProperties = TriangleProperty(TriangleProperty.WALL, False, TriangleProperty.LAMBERTIAN, 2, 3,) 
-            imark,jmark,kmark=[100,100,100,100],[100,100,100,100],np.array([ 19, 29, 39, 49]) -1 +5  #-1cm (estimation of exp acetone level + 5cm to reset on domain origin) 
-            bb = 6 # even
-            for i_, j_, k_ in zip(imark,jmark,kmark):
-                print((i_-bb/2+marge)*dxy, (j_-bb/2+marge)*dxy, (k_-bb/2+marge)*dz, dxy*(bb-2*marge),dxy*(bb-2*marge),dz*(bb-2*marge))
-                mesh = createCube([(i_-bb/2+marge)*dxy, (j_-bb/2+marge)*dxy, (k_-bb/2+marge)*dz], [dxy*(bb-2*marge),dxy*(bb-2*marge),dz*(bb-2*marge)])
-                mesh.add_to_mockup(mockup, boxProperties, isDEM=False)
+    #if 'run_backgrd_simulation_with_markup' in inputConfig.params_DART.keys():
+    #    if (time<0) & (inputConfig.params_DART['run_backgrd_simulation_with_markup']):
+    #   
+    #        print('Add markup')
+    #        boxProperties = TriangleProperty(TriangleProperty.WALL, False, TriangleProperty.LAMBERTIAN, 2, 3,) 
+    #        imark,jmark,kmark=[100,100,100,100],[100,100,100,100],np.array([ 19, 29, 39, 49]) -1 +5  #-1cm (estimation of exp acetone level + 5cm to reset on domain origin) 
+    #        bb = 6 # even
+    #        for i_, j_, k_ in zip(imark,jmark,kmark):
+    #            print((i_-bb/2+marge)*dxy, (j_-bb/2+marge)*dxy, (k_-bb/2+marge)*dz, dxy*(bb-2*marge),dxy*(bb-2*marge),dz*(bb-2*marge))
+    #            mesh = createCube([(i_-bb/2+marge)*dxy, (j_-bb/2+marge)*dxy, (k_-bb/2+marge)*dz], [dxy*(bb-2*marge),dxy*(bb-2*marge),dz*(bb-2*marge)])
+    #            mesh.add_to_mockup(mockup, boxProperties, isDEM=False)
 
 
     # add box to compute FRP
@@ -1402,27 +1403,10 @@ def setUpDartWithDAO( inputConfig, Firescene, xs, ys, zs, dxy, dz, time, \
     print('   mockup saved')
    
     
-    rteModel.run_dart(inputConfig, dir_simulation, simulation_name, time_requested=round(time,2), flag_set_up_box4_RadFlux=flag_box, flag2run='atmosphere')
+    rteModel.run_dart(inputConfig, dir_simulation, simulation_name, run_name, flag_set_up_box4_RadFlux=flag_box, flag2run='atmosphere')
    
 
     return 'setup dart simu done'
-
-'''
-#######################################################
-def createCube_FT(mockup, prop, xyz, sizeXYZ):
-    vertices = [tuple(xyz)]
-    vertices.append( (xyz[0] + sizeXYZ[0], xyz[1], xyz[2]) )
-    vertices.append( (xyz[0] + sizeXYZ[0], xyz[1] + sizeXYZ[1], xyz[2]) )
-    vertices.append( (xyz[0], xyz[1] + sizeXYZ[1], xyz[2]) )
-    vertices.append( (xyz[0], xyz[1], xyz[2] + sizeXYZ[2]) )
-    vertices.append( (xyz[0] + sizeXYZ[0], xyz[1], xyz[2] + sizeXYZ[2]) )
-    vertices.append( (xyz[0] + sizeXYZ[0], xyz[1] + sizeXYZ[1], xyz[2] + sizeXYZ[2]) )
-    vertices.append( (xyz[0], xyz[1] + sizeXYZ[1], xyz[2] + sizeXYZ[2]) )
-    vertices = np.array(vertices, dtype=np.float32)
-    for v1,v2,v3 in [ (1, 0, 3), (1, 3, 2), (0, 4, 7), (0, 7, 3), (4, 0, 1), (4, 1, 5), (7, 4, 6), (4, 5, 6), (5, 1, 6), (1, 2, 6), (6, 2, 7), (2, 3, 7) ]
-        t = Triangle(prop, False, vertex1 = vertices[v1], vertex2=vertices[v2], vertex3=vertices[v3])
-        mockup.addTriangle(t) 
-'''    
 
 
 #######################################################
@@ -1461,19 +1445,19 @@ def run_dao(inputConfig, FireName, dxy, dz, time, root_postproc, dir_3DFS, dir_o
 
 
 #######################################################
-def run_dao_noLoading(inputConfig, FireName, dxy, dz, time,dir_3DFS, dir_out, fv_thresholds, T_ambient, curtainLoc, flag_extraFDS, flag_box, loadedData, flag_run_phase, flag_debug=False, flag_onecell=None):
+def run_dao_noLoading(inputConfig, FireName, dxy, dz, dir_out, fv_thresholds, T_ambient, run_name, curtainLoc, flag_extraFDS, flag_box, loadedData, flag_run_phase, flag_debug=False, flag_onecell=None):
 
     DARTimageflag = '{:s}_'.format(inputConfig.params_DART['dart_config_bands']) \
                     if ('dart_config_bands' in inputConfig.params_DART.keys()) else ''
 
     name_simu = FireName #'fdsExample_multiproc'
-    run_name  = '{:s}t_{:03d}_{:02d}_s'.format(DARTimageflag, *np.array(math.modf(round(time,2))*np.array([100,1]),dtype=int)[::-1] ) #'t_039_00_s'#_luxDAO'
+    #run_name  = '{:s}t_{:03d}_{:02d}_s'.format(DARTimageflag, *np.array(math.modf(round(time,2))*np.array([100,1]),dtype=int)[::-1] ) #'t_039_00_s'#_luxDAO'
 
     xs,ys,zs,wind_speed,Firescene = loadedData 
    
     xs-=xs[0]
     ys-=ys[0]
-    mesg = setUpDartWithDAO( inputConfig, Firescene, xs,ys,zs, dxy,dz, time, 
+    mesg = setUpDartWithDAO( inputConfig, Firescene, xs,ys,zs, dxy,dz, 
                        name_simu, run_name, dir_out, fv_thresholds, T_ambient, curtainLoc, flag_run_phase, flag_extraFDS=flag_extraFDS,flag_box=flag_box, flag_debug=flag_debug, flag_onecell=flag_onecell)
     
 
@@ -1621,9 +1605,9 @@ if __name__ == '__main__':
         parser.add_argument('-name','--firename', help='simulation name',      required=True)
         parser.add_argument('-dxy','--dxy'      , help='horizontal resolution',required=True)
         parser.add_argument('-dz','--dz'        , help='vertial resolution',   required=True)
-        parser.add_argument('-t','--time'       , help='simulation time',      required=True)
+        #parser.add_argument('-t','--time'       , help='simulation time',      required=True)
         #parser.add_argument('-dirPostproc', '--dirPostproc' , help='dir root postproc', required=True)
-        parser.add_argument('-dir3dFS',     '--dir3dFS'     , help='dir 3DFS'         , required=True)
+        parser.add_argument('-file3dFS',     '--file3dFS'     , help='dir 3DFS'         , required=True)
         parser.add_argument('-dirDART',      '--dirDART'      , help='dir DART simu'          , required=True)
         #parser.add_argument('-dirOut',      '--dirOut'      , help='dir out'          , required=True)
         parser.add_argument('-fv',          '--fvthreshold' , help='fv_thresholds'    , required=False, default=None)
@@ -1637,10 +1621,10 @@ if __name__ == '__main__':
         FireName = args.firename 
         dxy      = float(args.dxy) 
         dz       = float(args.dz) 
-        time     = float(args.time) 
+        #time     = float(args.time) 
         # 
         #root_postproc = args.dirPostproc
-        dir_3DFS      = args.dir3dFS
+        file_3DFS      = args.file3dFS
         #dir_out       = args.dirOut
         dir_DART       = args.dirDART
         #
@@ -1654,27 +1638,40 @@ if __name__ == '__main__':
         curtainLoc = args.curtainLoc
 
     print('copy DART simu to tmp: ', end=(''))
-    dir_in = f"/tmp/{os.environ.get('USER')}/DART/simulations/{dir_DART.split('/')[-2].replace(FireName,'t')}/"
+    dir_in = f"{os.environ['HOME']}/tmpDART/simulations/{FireName}/{dir_DART.split('/')[-2].replace(FireName,'t')}/"
 
     if os.path.isdir(dir_in):
         shutil.rmtree(dir_in)
-    os.makedirs(f'/tmp/{os.environ.get("USER")}/DART/simulations', exist_ok=True)
+    os.makedirs(f'{os.environ["HOME"]}/tmpDART/simulations/{FireName}', exist_ok=True)
     shutil.copytree(dir_DART, dir_in)
     print('done')
 
-
+    
     inputConfig =importlib.machinery.SourceFileLoader('input_params_'+FireName,os.getcwd()+'/../input_config/input_params_'+FireName+'.py').load_module()
 
     #load firescene
-    loadedData = myPickle.decompress(dir_3DFS+ '3DfS_t_{:04d}_{:02d}.pickle.pbz2'.format( \
-                                                                      *np.array(math.modf(round(time,2))*np.array([100,1]),dtype=int)[::-1] ) )
+    #loadedData = myPickle.decompress(dir_3DFS+ '3DfS_t_{:04d}_{:02d}.pickle.pbz2'.format( \
+    #                                                                  *np.array(math.modf(round(time,2))*np.array([100,1]),dtype=int)[::-1] ) )
+    loadedData = myPickle.decompress(file_3DFS)
 
     flag_run_phase = True
     #mesg = run_dao(inputConfig, FireName, dxy, dz, time, root_postproc,dir_3DFS, dir_out, fv_thresholds, T_ambient, curtainLoc, flag_extraFDS, flag_box, flag_run_phase, flag_debug, flag_onecell=flag_onecell)
 
-    mesg = run_dao_noLoading(inputConfig, FireName, dxy, dz, time,dir_3DFS, '/'.join(dir_in.split('/')[:-2])+'/', fv_thresholds, T_ambient, curtainLoc, flag_extraFDS, flag_box, loadedData, flag_run_phase, flag_debug=flag_debug, flag_onecell=flag_onecell)
+    time = float(os.path.basename(file_3DFS).split('_')[2])+float(os.path.basename(file_3DFS).split('_')[3].split('.')[0])/100
+    DARTimageflag = '{:s}_'.format(inputConfig.params_DART['dart_config_bands']) \
+                    if ('dart_config_bands' in inputConfig.params_DART.keys()) else ''
+    run_name  = '{:s}t_{:03d}_{:02d}_s'.format(DARTimageflag, *np.array(math.modf(round(time,2))*np.array([100,1]),dtype=int)[::-1] ) #'t_039_00_s'#_luxDAO'
+   
+
+    mesg = run_dao_noLoading(inputConfig, FireName, dxy, dz, '/'.join(dir_in.split('/')[:-2])+'/', fv_thresholds, T_ambient, run_name, curtainLoc, 
+                             flag_extraFDS, flag_box, loadedData, flag_run_phase, flag_debug=flag_debug, flag_onecell=flag_onecell)
 
     print(mesg)
+    print('free tmp')
+    shutil.rmtree(f"{os.environ['HOME']}/tmpDART/")
+
+
+
     '''
     # define some parameters to shape and arrange the scene
     dxy =0.02 
